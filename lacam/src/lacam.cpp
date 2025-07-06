@@ -92,6 +92,7 @@ LaCAM::LaCAM(const Instance *_ins, DistTable *_D, int _verbose,
 
 LaCAM::~LaCAM() {}
 
+// 在给定的时间限制内，为所有智能体从起点到终点找到一组可行（或最优）的路径方案。
 Solution LaCAM::solve()
 {
   solver_info(1, "LaCAM begins");
