@@ -51,6 +51,7 @@ HNode::HNode(Config _Q, DistTable *D, HNode *_parent, int _g, int _h)
   std::sort(order.begin(), order.end(), cmp);
 }
 
+// 确保内存安全地释放 search_tree 队列中的所有动态分配对象，防止内存泄漏。
 HNode::~HNode()
 {
   while (!search_tree.empty()) {
