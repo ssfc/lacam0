@@ -110,6 +110,7 @@ Solution LaCAM::solve()
   GC_HNodes.push_back(H_init);
 
   // search loop
+  // 主搜索循环
   solver_info(2, "search iteration begins");
   while (!OPEN.empty() && !is_expired(deadline)) {
     ++loop_cnt;
