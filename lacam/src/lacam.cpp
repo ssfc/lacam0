@@ -73,6 +73,7 @@ LNode::LNode(LNode *parent, int i, Vertex *v)
 
 LNode::~LNode(){};
 
+// 初始化 LaCAM 类的成员变量，为后续算法运行做准备。
 LaCAM::LaCAM(const Instance *_ins, DistTable *_D, int _verbose,
              const Deadline *_deadline, int _seed)
     : ins(_ins),
