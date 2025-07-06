@@ -267,6 +267,7 @@ int LaCAM::get_g_val(HNode *H_parent, const Config &Q_to)
   return H_parent->g + get_edge_cost(H_parent->Q, Q_to);
 }
 
+// 给定当前所有智能体的状态配置 Q，计算一个乐观的（但可能小于实际值的）从当前配置到目标配置的总代价估计，用作A*等启发式搜索算法的h值。
 int LaCAM::get_h_val(const Config &Q)
 {
   auto c = 0;
