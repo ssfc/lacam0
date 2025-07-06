@@ -227,6 +227,7 @@ bool LaCAM::set_new_config(HNode *H, LNode *L, Config &Q_to)
   return pibt.set_new_config(H->Q, Q_to, H->order);
 }
 
+// 在“任意时刻（ANYTIME）”搜索模式下，动态修正高层节点间的可达关系，并重新优化相关路径开销。
 void LaCAM::rewrite(HNode *H_from, HNode *H_to)
 {
   if (!ANYTIME) return;
