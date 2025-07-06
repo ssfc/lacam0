@@ -261,6 +261,7 @@ void LaCAM::rewrite(HNode *H_from, HNode *H_to)
   }
 }
 
+// 当前路径总代价 = 父节点路径总代价 + 本次跳转花费
 int LaCAM::get_g_val(HNode *H_parent, const Config &Q_to)
 {
   return H_parent->g + get_edge_cost(H_parent->Q, Q_to);
