@@ -99,6 +99,7 @@ Solution LaCAM::solve()
   solver_info(1, "LaCAM begins");
 
   // setup search
+  // 用于记录已经探索过的配置（哈希表，避免重复扩展）。
   auto EXPLORED = std::unordered_map<Config, HNode *, ConfigHasher>();
   HNodes GC_HNodes;
 
