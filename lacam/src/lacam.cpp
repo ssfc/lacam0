@@ -112,7 +112,9 @@ Solution LaCAM::solve()
   // search loop
   // 主搜索循环
   solver_info(2, "search iteration begins");
-  while (!OPEN.empty() && !is_expired(deadline)) {
+  // 只要OPEN表不空，且没有超时，循环继续。
+  while (!OPEN.empty() && !is_expired(deadline))
+  {
     ++loop_cnt;
 
     // random insert
