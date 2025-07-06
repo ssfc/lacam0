@@ -104,7 +104,7 @@ Solution LaCAM::solve()
   HNodes GC_HNodes; // 用于后续内存回收，保存所有高层节点指针。
 
   // insert initial node
-  auto H_init = new HNode(ins->starts, D);
+  auto H_init = new HNode(ins->starts, D); // 新建一个以起点为内容的高层节点H_init。
   OPEN.push_front(H_init);
   EXPLORED[H_init->Q] = H_init;
   GC_HNodes.push_back(H_init);
