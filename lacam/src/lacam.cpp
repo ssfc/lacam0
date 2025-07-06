@@ -275,6 +275,7 @@ int LaCAM::get_h_val(const Config &Q)
   return c;
 }
 
+// 在多智能体路径规划中，两个状态（配置）之间转移的代价计算函数
 int LaCAM::get_edge_cost(const Config &Q1, const Config &Q2)
 {
   auto cost = 0;
