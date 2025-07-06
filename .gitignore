@@ -45,4 +45,5 @@ scen
 **/local/
 .clangd
 
+.idea/
 cmake-build-debug/
