@@ -118,6 +118,7 @@ Solution LaCAM::solve()
     ++loop_cnt;
 
     // random insert
+    // 增加搜索多样性（random restart/插入），利用概率在 OPEN 表头插入初始节点或其他随机节点。
     if (H_goal != nullptr)
     {
       auto r = rrd(MT);
@@ -133,6 +134,7 @@ Solution LaCAM::solve()
     }
 
     // do not pop here!
+    // 取 OPEN 表头节点（注意：这里只取不弹，后面有条件才弹）。
     auto H = OPEN.front();  // high-level node
 
     // check uppwer bounds
