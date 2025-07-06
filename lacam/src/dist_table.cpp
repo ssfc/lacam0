@@ -9,6 +9,7 @@ DistTable::DistTable(const Instance &ins)
   setup(&ins);
 }
 
+// 初始化成员变量，并调用 setup 方法完成距离表的预处理。
 DistTable::DistTable(const Instance *ins)
     : K(ins->G.V.size()), table(ins->N, std::vector<int>(K, K))
 {
