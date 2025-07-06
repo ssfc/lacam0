@@ -105,8 +105,8 @@ Solution LaCAM::solve()
 
   // insert initial node
   auto H_init = new HNode(ins->starts, D); // 新建一个以起点为内容的高层节点H_init。
-  OPEN.push_front(H_init);
-  EXPLORED[H_init->Q] = H_init;
+  OPEN.push_front(H_init); // 将其插入OPEN表（待扩展节点队列）。
+  EXPLORED[H_init->Q] = H_init; // 标记为已探索，且加入垃圾回收管理队列。
   GC_HNodes.push_back(H_init);
 
   // search loop
