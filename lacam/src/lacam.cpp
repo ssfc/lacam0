@@ -220,6 +220,7 @@ Solution LaCAM::solve()
   return solution;
 }
 
+// 据当前高层节点和低层节点，生成一个新的多智能体联合状态配置 Q_to，并通过底层的策略（如 PIBT 算法）进一步调整配置的可行性和细节。
 bool LaCAM::set_new_config(HNode *H, LNode *L, Config &Q_to)
 {
   for (uint d = 0; d < L->depth; ++d) Q_to[L->who[d]] = L->where[d];
