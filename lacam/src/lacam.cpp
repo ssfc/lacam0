@@ -95,6 +95,7 @@ LaCAM::~LaCAM() {}
 // 在给定的时间限制内，为所有智能体从起点到终点找到一组可行（或最优）的路径方案。
 Solution LaCAM::solve()
 {
+  // 输出算法启动信息。
   solver_info(1, "LaCAM begins");
 
   // setup search
