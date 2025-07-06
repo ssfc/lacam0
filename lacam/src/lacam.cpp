@@ -101,7 +101,7 @@ Solution LaCAM::solve()
   // setup search
   // 用于记录已经探索过的配置（哈希表，避免重复扩展）。
   auto EXPLORED = std::unordered_map<Config, HNode *, ConfigHasher>();
-  HNodes GC_HNodes;
+  HNodes GC_HNodes; // 用于后续内存回收，保存所有高层节点指针。
 
   // insert initial node
   auto H_init = new HNode(ins->starts, D);
