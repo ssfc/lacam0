@@ -14,6 +14,7 @@ DistTable::DistTable(const Instance *ins)
   setup(ins);
 }
 
+// 为每个目标点做一次图的多源广度优先搜索（BFS），以预先计算每个节点到各目标点的最短距离。方法支持多线程并发初始化和单线程惰性初始化两种方式.
 void DistTable::setup(const Instance *ins)
 {
   if (MULTI_THREAD_INIT) {
