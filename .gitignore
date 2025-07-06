@@ -44,3 +44,5 @@ map
 scen
 **/local/
 .clangd
+
+cmake-build-debug/
