@@ -60,6 +60,7 @@ HNode::~HNode()
   }
 }
 
+//  LNode 类的默认构造函数，其作用是初始化 LNode 类的成员变量。
 LNode::LNode() : who(), where(), depth(0) {}
 
 LNode::LNode(LNode *parent, int i, Vertex *v)
