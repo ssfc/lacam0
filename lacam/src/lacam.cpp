@@ -4,6 +4,7 @@ bool LaCAM::ANYTIME = false;
 float LaCAM::RANDOM_INSERT_PROB1 = 0.001;
 float LaCAM::RANDOM_INSERT_PROB2 = 0.001;
 
+// 函数对象（仿函数）的比较运算符，专门用来比较两个HNode*（指向HNode结构的指针）的“大小”。
 bool CompareHNodePointers::operator()(const HNode *l, const HNode *r) const
 {
   const auto N = l->Q.size();
