@@ -14,6 +14,7 @@ bool CompareHNodePointers::operator()(const HNode *l, const HNode *r) const
   return false;
 }
 
+//  HNode 类的构造函数，主要作用是基于给定的参数（配置、距离表、父节点、代价等）初始化一个新的搜索树节点。
 HNode::HNode(Config _Q, DistTable *D, HNode *_parent, int _g, int _h)
     : Q(_Q),
       parent(_parent),
