@@ -118,11 +118,15 @@ Solution LaCAM::solve()
     ++loop_cnt;
 
     // random insert
-    if (H_goal != nullptr) {
+    if (H_goal != nullptr)
+    {
       auto r = rrd(MT);
-      if (r < RANDOM_INSERT_PROB2 / 2) {
+      if (r < RANDOM_INSERT_PROB2 / 2)
+      {
         OPEN.push_front(H_init);
-      } else if (r < RANDOM_INSERT_PROB2) {
+      }
+      else if (r < RANDOM_INSERT_PROB2)
+      {
         auto H = OPEN[get_random_int(MT, 0, OPEN.size() - 1)];
         OPEN.push_front(H);
       }
