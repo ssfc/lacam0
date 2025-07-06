@@ -2,6 +2,7 @@
 
 bool DistTable::MULTI_THREAD_INIT = true;
 
+// 初始化距离表并调用 BFS 预处理。
 DistTable::DistTable(const Instance &ins)
     : K(ins.G.V.size()), table(ins.N, std::vector<int>(K, K))
 {
