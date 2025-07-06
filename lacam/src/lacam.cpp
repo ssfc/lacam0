@@ -63,6 +63,7 @@ HNode::~HNode()
 //  LNode 类的默认构造函数，其作用是初始化 LNode 类的成员变量。
 LNode::LNode() : who(), where(), depth(0) {}
 
+// 根据给定的父节点、一个整数和一个顶点指针，构造新的 LNode 对象。
 LNode::LNode(LNode *parent, int i, Vertex *v)
     : who(parent->who), where(parent->where), depth(parent->depth + 1)
 {
