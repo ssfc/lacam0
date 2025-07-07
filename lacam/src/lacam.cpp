@@ -242,6 +242,7 @@ Solution LaCAM::solve()
   }
 
   // end processing
+  // 清理所有动态分配的高层节点，防止内存泄漏。
   for (auto &&H : GC_HNodes) delete H;  // memory management
 
   return solution;
