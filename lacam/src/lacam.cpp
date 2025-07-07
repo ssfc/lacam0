@@ -213,6 +213,7 @@ Solution LaCAM::solve()
   }
 
   // backtrack
+  // 从终点H_goal开始，逐步追溯回父节点，重建整个路径，最终逆序得到从起点到终点的完整解。
   Solution solution;
   {
     auto H = H_goal;
