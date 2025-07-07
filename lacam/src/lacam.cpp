@@ -175,7 +175,9 @@ Solution LaCAM::solve()
     }
 
     // create successors at the high-level search
+    // 生成新配置Q_to。
     auto Q_to = Config(ins->N, nullptr);
+    // 验证有效后（set_new_config），生成新的高层节点。
     auto res = set_new_config(H, L, Q_to);
     delete L;
     if (!res) continue;
