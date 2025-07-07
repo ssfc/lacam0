@@ -225,17 +225,26 @@ Solution LaCAM::solve()
   }
 
   // solution
-  if (solution.empty()) {
-    if (OPEN.empty()) {
+  if (solution.empty())
+  {
+    if (OPEN.empty())
+    {
       solver_info(2, "fin. unsolvable instance");
-    } else {
+    }
+    else
+    {
       solver_info(2, "fin. reach time limit");
     }
-  } else {
-    if (OPEN.empty()) {
+  }
+  else
+  {
+    if (OPEN.empty())
+    {
       solver_info(2, "fin. optimal solution, g=", H_goal->g,
                   ", depth=", H_goal->depth);
-    } else {
+    }
+    else
+    {
       solver_info(2, "fin. suboptimal solution, g=", H_goal->g,
                   ", depth=", H_goal->depth);
     }
