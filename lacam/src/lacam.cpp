@@ -184,20 +184,26 @@ Solution LaCAM::solve()
 
     // check explored list
     auto iter = EXPLORED.find(Q_to);
-    if (iter == EXPLORED.end()) {
+    if (iter == EXPLORED.end())
+    {
       // new one -> insert
       auto H_new = new HNode(Q_to, D, H, get_g_val(H, Q_to), get_h_val(Q_to));
       OPEN.push_front(H_new);
       EXPLORED[H_new->Q] = H_new;
       GC_HNodes.push_back(H_new);
-    } else {
+    }
+    else
+    {
       // known configuration
       auto H_known = iter->second;
       rewrite(H, H_known);
 
-      if (rrd(MT) >= RANDOM_INSERT_PROB1) {
+      if (rrd(MT) >= RANDOM_INSERT_PROB1)
+      {
         OPEN.push_front(iter->second);  // usual
-      } else {
+      }
+      else
+      {
         solver_info(3, "random restart");
         OPEN.push_front(H_init);  // sometimes
       }
