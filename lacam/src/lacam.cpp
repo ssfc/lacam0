@@ -240,12 +240,13 @@ Solution LaCAM::solve()
   }
   else
   {
-    // 若找到解并OPEN空，表示最优解；否则可能是次优或抢先解。
+    // 若找到解并OPEN空，表示最优解；
     if (OPEN.empty())
     {
       solver_info(2, "fin. optimal solution, g=", H_goal->g,
                   ", depth=", H_goal->depth);
     }
+    // 否则可能是次优或抢先解。
     else
     {
       solver_info(2, "fin. suboptimal solution, g=", H_goal->g,
