@@ -193,6 +193,7 @@ Solution LaCAM::solve()
       EXPLORED[H_new->Q] = H_new;
       GC_HNodes.push_back(H_new);
     }
+    // 如果已经探索过，同步旧信息并根据概率插入不同类型的节点（增强搜索覆盖）。
     else
     {
       // known configuration
