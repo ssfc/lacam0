@@ -148,6 +148,7 @@ Solution LaCAM::solve()
     }
 
     // check goal condition
+    // 如果是第一次到达所有agent目标，则设置H_goal。在非anytime模式下，找到后直接退出。
     if (H_goal == nullptr && is_same_config(H->Q, ins->goals)) {
       H_goal = H;
       solver_info(2, "found solution, g=", H->g, ", depth=", H->depth);
