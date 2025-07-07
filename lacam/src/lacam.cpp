@@ -166,6 +166,7 @@ Solution LaCAM::solve()
     H->search_tree.pop();
 
     // low level search
+    // 扩展当前节点的低层树，随机化动作，逐步推进各智能体的动作组合（类似多队列 BFS 或多智能体交替扩展）。
     if (L->depth < H->Q.size()) {
       const auto i = H->order[L->depth];
       auto &&C = H->Q[i]->actions;
