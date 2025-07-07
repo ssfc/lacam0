@@ -227,10 +227,12 @@ Solution LaCAM::solve()
   // solution
   if (solution.empty())
   {
+    // 若无解且OPEN空，说明无解。
     if (OPEN.empty())
     {
       solver_info(2, "fin. unsolvable instance");
     }
+    // 若走到时间限制，则表示未找到解。
     else
     {
       solver_info(2, "fin. reach time limit");
@@ -238,6 +240,7 @@ Solution LaCAM::solve()
   }
   else
   {
+    // 若找到解并OPEN空，表示最优解；否则可能是次优或抢先解。
     if (OPEN.empty())
     {
       solver_info(2, "fin. optimal solution, g=", H_goal->g,
