@@ -258,6 +258,7 @@ Solution LaCAM::solve()
   // 清理所有动态分配的高层节点，防止内存泄漏。
   for (auto &&H : GC_HNodes) delete H;  // memory management
 
+  // 返回搜索到的solution路径（一个多步配置的数组，每个元素代表某一步所有智能体的联合状态）。
   return solution;
 }
 
