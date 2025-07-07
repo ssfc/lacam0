@@ -184,6 +184,7 @@ Solution LaCAM::solve()
 
     // check explored list
     auto iter = EXPLORED.find(Q_to);
+    // 如果新配置没被探索过，则新建高层节点，推进到OPEN和EXPLORED。
     if (iter == EXPLORED.end())
     {
       // new one -> insert
