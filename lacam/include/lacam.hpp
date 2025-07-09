@@ -39,7 +39,7 @@ struct CompareHNodePointers {  // for determinism
 
 // high-level search node
 struct HNode {
-  const Config Q;
+  const Config Q; // locations for all agents
   HNode *parent;
   std::set<HNode *, CompareHNodePointers> neighbors;
 
