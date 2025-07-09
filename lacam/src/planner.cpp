@@ -12,5 +12,6 @@ Solution solve(const Instance &ins, int verbose, const Deadline *deadline,
   // lacam
   auto lacam = LaCAM(&ins, &D, verbose, deadline, seed);
   info(1, verbose, deadline, "start lacam");
-  return lacam.solve();
+  // return lacam.solve();
+  return lacam.solve_beam();
 }
