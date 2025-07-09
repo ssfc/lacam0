@@ -189,6 +189,7 @@ Solution LaCAM::solve()
     }
 
     // create successors at the high-level search
+    // 14:  Qnew ←get new config(N,C)
     // 生成新配置Q_to。
     auto Q_to = Config(ins->N, nullptr);
     // 验证有效后（set_new_config），生成新的高层节点。
@@ -202,6 +203,7 @@ Solution LaCAM::solve()
     if (iter == EXPLORED.end())
     {
       // new one -> insert
+      // 18: Open.push(Nnew); Explored[Qnew] = Nnew
       auto H_new = new HNode(Q_to, D, H, get_g_val(H, Q_to), get_h_val(Q_to));
       OPEN.push_front(H_new);
       EXPLORED[H_new->Q] = H_new;
