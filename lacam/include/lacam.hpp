@@ -83,6 +83,7 @@ struct LaCAM {
         const Deadline *_deadline = nullptr, int _seed = 0);
   ~LaCAM();
   Solution solve();
+  Solution solve_beam(); // beam search的方法
   bool set_new_config(HNode *S, LNode *M, Config &Q_to);
   void rewrite(HNode *H_from, HNode *H_to);
   int get_g_val(HNode *H_parent, const Config &Q_to);
