@@ -136,6 +136,7 @@ Solution LaCAM::solve()
     }
 
     // do not pop here!
+    // 5: N ←Open.top()
     // 取 OPEN 表头节点（注意：这里只取不弹，后面有条件才弹）。
     auto H = OPEN.front();  // high-level node
 
@@ -150,6 +151,7 @@ Solution LaCAM::solve()
     }
 
     // check goal condition
+    // 6: if N.config = G then return backtrack(N)
     // 如果是第一次到达所有agent目标，则设置H_goal。在非anytime模式下，找到后直接退出。
     if (H_goal == nullptr && is_same_config(H->Q, ins->goals))
     {
