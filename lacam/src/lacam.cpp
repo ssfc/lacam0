@@ -220,7 +220,8 @@ Solution LaCAM::solve()
   Solution solution;
   {
     auto H = H_goal;
-    while (H != nullptr) {
+    while (H != nullptr)
+    {
       solution.push_back(H->Q);
       H = H->parent;
     }
