@@ -70,7 +70,7 @@ struct LaCAM {
 
   // solver utils
   PIBT pibt;
-  HNode *H_goal;
+  HNode *H_goal; // 用于记录“已找到的目标解节点”（即所有智能体都到达终点时的高层节点）的指针变量。它在高层搜索过程中用于判断是否已经找到解、剪枝冗余搜索分支，以及最终回溯并提取路径方案时作为起点。如果 H_goal 为空，说明尚未找到解；一旦被赋值，就代表找到了至少一个可行解
   std::deque<HNode *> OPEN;
   int loop_cnt;
 
