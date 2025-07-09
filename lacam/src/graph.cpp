@@ -131,6 +131,7 @@ bool is_connected(const Graph *G)
 
 bool is_connected(const Graph &G) { return is_connected(&G); }
 
+// 逐个比较两个配置里对应节点的 id，只要有一个不同就认为不相同，否则就认定完全一样。
 bool is_same_config(const Config &C1, const Config &C2)
 {
   const auto N = C1.size();
