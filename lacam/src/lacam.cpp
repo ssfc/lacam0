@@ -284,6 +284,11 @@ Solution LaCAM::solve_beam()
 {
   int beam_width = 32; // beam宽度
 
+  std::vector<HNode*> beam;          // 当前层束
+  std::vector<HNode*> next_beam;     // 下一层候选
+  auto cmpF = [](HNode* a, HNode* b){ return a->f < b->f; };
+  
+
   // 输出算法启动信息。
   solver_info(1, "LaCAM begins");
 
