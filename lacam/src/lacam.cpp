@@ -287,7 +287,7 @@ Solution LaCAM::solve_beam()
   // 只要OPEN表不空，且没有超时，循环继续。
   while (!OPEN.empty() && !is_expired(deadline))
   {
-    ++loop_cnt;
+    ++loop_cnt; // 循环次数
 
     // random insert
     // 增加搜索多样性（random restart/插入），利用概率在 OPEN 表头插入初始节点或其他随机节点。
