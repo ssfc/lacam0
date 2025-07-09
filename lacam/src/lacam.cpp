@@ -174,12 +174,17 @@ Solution LaCAM::solve()
     H->search_tree.pop();
 
     // low level search
+    // 9: if depth(C) ≤ |A| then
     // 扩展当前节点的低层树，随机化动作，逐步推进各智能体的动作组合（类似多队列 BFS 或多智能体交替扩展）。
     if (L->depth < H->Q.size())
     {
+      // 10: i←N.order[depth(C)]; v ← N.config[i]
       const auto i = H->order[L->depth];
       auto &&C = H->Q[i]->actions;
       std::shuffle(C.begin(), C.end(), MT);  // randomize
+      // 11: foru∈neigh(v)∪{v}do
+      // 12:  Cnew←⟨parent :C,who :i,where : u⟩
+      // 13: N.tree.push(Cnew)
       for (auto u : C) H->search_tree.push(new LNode(L, i, u));
     }
 
