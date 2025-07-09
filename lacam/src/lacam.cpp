@@ -118,7 +118,7 @@ Solution LaCAM::solve()
     ++loop_cnt;
 
     // random insert
-    // 在找到一个可行解后，增加多样性（random restart/插入），利用概率在 OPEN 表头插入初始节点或其他随机节点。
+    // Anytime mode: 在找到一个可行解后，增加多样性（random restart/插入），利用概率在 OPEN 表头插入初始节点或其他随机节点。
     if (H_goal != nullptr)
     {
       auto r = rrd(MT);
