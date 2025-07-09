@@ -104,6 +104,7 @@ Solution LaCAM::solve()
   HNodes GC_HNodes; // 用于后续内存回收，保存所有高层节点指针。
 
   // insert initial node
+  // 3: Open.push(Ninit); Explored[S] = Ninit
   auto H_init = new HNode(ins->starts, D); // 新建一个以起点为内容的高层节点H_init。
   OPEN.push_front(H_init); // 将其插入OPEN表（待扩展节点队列）。
   EXPLORED[H_init->Q] = H_init; // 标记为已探索，且加入垃圾回收管理队列。
@@ -113,6 +114,7 @@ Solution LaCAM::solve()
   // 主搜索循环
   solver_info(2, "search iteration begins");
   // 只要OPEN表不空，且没有超时，循环继续。
+  // 4: while Open= ∅ do
   while (!OPEN.empty() && !is_expired(deadline))
   {
     ++loop_cnt;
