@@ -265,6 +265,8 @@ Solution LaCAM::solve()
 // 融合了beam search的方法
 Solution LaCAM::solve_beam()
 {
+  int beam_width = 32; // beam宽度
+
   // 输出算法启动信息。
   solver_info(1, "LaCAM begins");
 
