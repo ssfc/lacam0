@@ -162,12 +162,14 @@ Solution LaCAM::solve()
     }
 
     // extract constraints
+    // 7: if N.tree = ∅ then Open.pop(); continue
     // 若当前高层节点 search tree 为空，无子节点可扩展，则弹出 OPEN 并跳过。
     if (H->search_tree.empty())
     {
       OPEN.pop_front();
       continue;
     }
+    // 8: C ←N.tree.pop()
     auto L = H->search_tree.front();
     H->search_tree.pop();
 
