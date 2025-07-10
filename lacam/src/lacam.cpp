@@ -343,7 +343,8 @@ Solution LaCAM::solve_beam()
 
     // check goal condition
     // 如果是第一次到达所有agent目标，则设置H_goal。在非anytime模式下，找到后直接退出。
-    if (H_goal == nullptr && is_same_config(H->Q, ins->goals)) {
+    if (H_goal == nullptr && is_same_config(H->Q, ins->goals))
+    {
       H_goal = H;
       solver_info(2, "found solution, g=", H->g, ", depth=", H->depth);
       if (!ANYTIME) break;
@@ -352,7 +353,8 @@ Solution LaCAM::solve_beam()
 
     // extract constraints
     // 若当前高层节点 search tree 为空，无子节点可扩展，则弹出 OPEN 并跳过。
-    if (H->search_tree.empty()) {
+    if (H->search_tree.empty())
+    {
       OPEN.pop_front();
       continue;
     }
