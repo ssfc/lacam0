@@ -99,13 +99,11 @@ int main(int argc, char *argv[])
 
 
 // Test on ubuntu platform:
-// Compile
-// cmake . ; make
+// Build
+// cmake -B build && make -C build -j4
 // Run
-// ./lifelong -m maps/sorting_map.grid -k 400 --scenario=SORTING --simulation_window=5 --planning_window=10 --solver=PBS --seed=0 --simulation_time 20
+// build/main -i assets/random-32-32-20-random-1.scen -m assets/random-32-32-20.map -N 400 -v 3
 
 // Test on windows platform:
-// Compile
-// build by clion.
-// Run
-// ./lifelong -m ../maps/sorting_map.grid -k 800 --scenario=SORTING --simulation_window=5 --planning_window=10 --solver=PBS --seed=0 --simulation_time 25
+// Build
+// cannot compile on windows.
