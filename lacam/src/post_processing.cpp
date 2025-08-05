@@ -134,7 +134,7 @@ void make_log(const Instance &ins, const Solution &solution,
   }
   log.close();
 
-  string to_csv_path = outfolder + "/experimental_results.csv";
+  std::string to_csv_path = "experimental_results.csv";
   std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
   if (!to_csv.is_open()) {
     std::cerr << "Error opening csv!" << std::endl;
@@ -148,12 +148,11 @@ void make_log(const Instance &ins, const Solution &solution,
   to_csv << instance << ","; // instance
 
   to_csv << "12400F" << ","; // device
-  to_csv << "rhcr-cbs" << ","; // method
-  to_csv << !mapf_solver.hold_endpoints << ","; // disappear or not
-  to_csv << use_cat << ","; // 是否使用CAT break tie
-  to_csv << random_seed << ","; // random seed
+  to_csv << "Lacam" << ","; // method
+  to_csv << -1 << ","; // disappear or not
+  to_csv << -1 << ","; // 是否使用CAT break tie
+  to_csv << -1 << ","; // random seed
 
-  update_paths(mapf_solver.solution, INT_MAX);
   auto plan_time = (std::clock() - time) * 1.0 / CLOCKS_PER_SEC;
   std::cout << "plan time: (" << plan_time << "s)" << std::endl;
 
