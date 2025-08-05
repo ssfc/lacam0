@@ -133,4 +133,53 @@ void make_log(const Instance &ins, const Solution &solution,
     log << "\n";
   }
   log.close();
+
+  string to_csv_path = outfolder + "/experimental_results.csv";
+  std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
+  if (!to_csv.is_open()) {
+    std::cerr << "Error opening csv!" << std::endl;
+    return;
+  }
+
+  to_csv << -1 << ","; // id
+
+  std::filesystem::path filePath(amhs_graph.instance_path);
+  std::string instance = filePath.filename().string(); // 提取文件名部分
+  to_csv << instance << ","; // instance
+
+  to_csv << "12400F" << ","; // device
+  to_csv << "rhcr-cbs" << ","; // method
+  to_csv << !mapf_solver.hold_endpoints << ","; // disappear or not
+  to_csv << use_cat << ","; // 是否使用CAT break tie
+  to_csv << random_seed << ","; // random seed
+
+  update_paths(mapf_solver.solution, INT_MAX);
+  auto plan_time = (std::clock() - time) * 1.0 / CLOCKS_PER_SEC;
+  std::cout << "plan time: (" << plan_time << "s)" << std::endl;
+
+  size_t total_cost_hold_endpoints = 0;
+  for(auto & path : mapf_solver.solution)
+  {
+    for(const auto & j : path)
+    {
+      cout << "(" << j.location % amhs_graph.num_rows << "," << j.location / amhs_graph.num_rows  << "),";
+    }
+
+    total_cost_hold_endpoints += path.size() - 1;
+    cout << endl;
+  }
+  cout << "total cost hold endpoint: " << total_cost_hold_endpoints << endl;
+
+  to_csv << total_cost_hold_endpoints << ",";
+  to_csv << plan_time << ",";
+  to_csv << "NULL" << ","; // comment
+  to_csv << "https://github.com/ssfc/rhcr" << ","; // method source
+
+  // 获取当前时间点
+  auto now = std::chrono::system_clock::now();
+  // 转换为 time_t 格式
+  std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+  // 输出时间
+  to_csv << std::put_time(std::localtime(&currentTime), "%Y-%m-%d %H:%M:%S")
+         << "\n";
 }
