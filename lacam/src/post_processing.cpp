@@ -53,6 +53,8 @@ bool is_feasible_solution(const Instance &ins, const Solution &solution,
   return true;
 }
 
+
+// 是统计并打印多智能体路径问题（MAPF）求解后的各项关键性能指标
 void print_stats(const int verbose, const Deadline *deadline,
                  const Instance &ins, const Solution &solution,
                  const double comp_time_ms)
