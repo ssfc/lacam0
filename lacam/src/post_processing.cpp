@@ -1,5 +1,7 @@
 #include "../include/post_processing.hpp"
 
+
+// 在多智能体路径规划（Multi-Agent Path Finding, MAPF）问题中，检查给定的路径解（solution）是否是一个可行解。
 bool is_feasible_solution(const Instance &ins, const Solution &solution,
                           const int verbose)
 {
