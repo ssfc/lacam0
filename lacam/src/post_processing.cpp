@@ -75,9 +75,12 @@ void print_stats(const int verbose, const Deadline *deadline,
        ", ub=", ceil((float)sum_of_loss / sum_of_costs_lb), ")");
 }
 
+
 // for log of map_name
 static const std::regex r_map_name = std::regex(R"(.+/(.+))");
 
+
+// 将多智能体路径规划（MAPF）实验结果写入日志文件
 void make_log(const Instance &ins, const Solution &solution,
               const std::string &output_name, const double comp_time_ms,
               const std::string &map_name, const int seed, const bool log_short)
