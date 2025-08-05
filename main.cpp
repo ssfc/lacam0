@@ -107,6 +107,7 @@ int main(int argc, char *argv[])
 // Run
 // build/main -i assets/random-32-32-20-random-1.scen -m assets/random-32-32-20.map -N 400 -v 3
 // build/main -i ../movingai-benchmark/scen-random/random-32-32-20-random-1.scen -m ../movingai-benchmark/mapf-map/random-32-32-20.map -N 100 -v 3
+// for N in {1..200}; do build/main -i assets/random-32-32-20-random-1.scen -m assets/random-32-32-20.map -v 3 -N $N; done
 
 // Test on windows platform:
 // Build
