@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
       .default_value(3.0f);
   program.add_argument("-o", "--output")
       .help("output file")
-      .default_value("./build/result.txt");
+      .default_value("./build/result.txt"); // 默认保存在result.txt文件里
   program.add_argument("-l", "--log_short")
       .default_value(false)
       .implicit_value(true);
