@@ -153,12 +153,12 @@ void make_log(const Instance &ins, const Solution &solution,
   to_csv << -1 << ","; // 是否使用CAT break tie
   to_csv << -1 << ","; // random seed
 
-  auto plan_time = (std::clock() - time) * 1.0 / CLOCKS_PER_SEC;
-  std::cout << "plan time: (" << plan_time << "s)" << std::endl;
-
   size_t total_cost_hold_endpoints = get_sum_of_loss(solution);
   to_csv << total_cost_hold_endpoints << ",";
+
+  auto plan_time = comp_time_ms;
   to_csv << plan_time << ",";
+
   to_csv << "NULL" << ","; // comment
   to_csv << "https://github.com/ssfc/rhcr" << ","; // method source
 
