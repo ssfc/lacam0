@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
   // post processing
   print_stats(verbose, &deadline, ins, solution, comp_time_ms);
   make_log(ins, solution, output_name, comp_time_ms, map_name, seed, log_short);
-  
+
   return 0;
 }
 
