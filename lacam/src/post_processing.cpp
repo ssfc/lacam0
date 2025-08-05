@@ -156,19 +156,7 @@ void make_log(const Instance &ins, const Solution &solution,
   auto plan_time = (std::clock() - time) * 1.0 / CLOCKS_PER_SEC;
   std::cout << "plan time: (" << plan_time << "s)" << std::endl;
 
-  size_t total_cost_hold_endpoints = 0;
-  for(auto & path : mapf_solver.solution)
-  {
-    for(const auto & j : path)
-    {
-      cout << "(" << j.location % amhs_graph.num_rows << "," << j.location / amhs_graph.num_rows  << "),";
-    }
-
-    total_cost_hold_endpoints += path.size() - 1;
-    cout << endl;
-  }
-  cout << "total cost hold endpoint: " << total_cost_hold_endpoints << endl;
-
+  size_t total_cost_hold_endpoints = get_sum_of_loss(solution);
   to_csv << total_cost_hold_endpoints << ",";
   to_csv << plan_time << ",";
   to_csv << "NULL" << ","; // comment
