@@ -1,6 +1,28 @@
 #include "../include/post_processing.hpp"
 
 
+#ifdef _WIN32
+#include <string>
+#include <array>
+#include <memory>
+#include <iostream>
+
+std::string get_cpu_name() {
+  std::array<char, 128> buffer;
+  std::string result;
+  std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen("wmic cpu get Name", "r"), _pclose);
+  if (!pipe) return "";
+  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+    result += buffer.data();
+  }
+  // 处理结果，仅保留12100F或10400F
+  if (result.find("12100F") != std::string::npos) return "12100F";
+  if (result.find("10400F") != std::string::npos) return "10400F";
+  return "Unknown";
+}
+#endif
+
+
 // 在多智能体路径规划（Multi-Agent Path Finding, MAPF）问题中，检查给定的路径解（solution）是否是一个可行解。
 bool is_feasible_solution(const Instance &ins, const Solution &solution,
                           const int verbose)
@@ -83,7 +105,7 @@ static const std::regex r_map_name = std::regex(R"(.+/(.+))");
 // 将多智能体路径规划（MAPF）实验结果写入日志文件
 void make_log(const Instance &ins, const Solution &solution,
               const std::string &output_name, const double comp_time_ms,
-              const std::string &map_name, const int seed, const bool log_short)
+              const std::string &map_name, const std::string &scen_name, const int seed, const bool log_short)
 {
   // map name
   std::smatch results;
@@ -134,6 +156,7 @@ void make_log(const Instance &ins, const Solution &solution,
   }
   log.close();
 
+  // save result to csv
   std::string to_csv_path = "experimental_results.csv";
   std::ofstream to_csv(to_csv_path, std::ios::app);  // 以追加模式打开文件
   if (!to_csv.is_open()) {
@@ -143,22 +166,29 @@ void make_log(const Instance &ins, const Solution &solution,
 
   to_csv << -1 << ","; // id
 
-  std::filesystem::path filePath(amhs_graph.instance_path);
-  std::string instance = filePath.filename().string(); // 提取文件名部分
-  to_csv << instance << ","; // instance
+  to_csv << map_recorded_name << ","; // map_name
 
+  to_csv << scen_name << ","; // agent file name
+  to_csv << ins.N << ","; // num of agents
+
+#ifdef _WIN32
+  to_csv << get_cpu_name() << ","; // device
+#elif __linux__
   to_csv << "12400F" << ","; // device
-  to_csv << "Lacam" << ","; // method
+#else
+  to_csv << "Unknown" << ","; // device
+#endif
+
+  to_csv << "Lacam" << ","; // high level solver name
+  to_csv << "PIBT" << ","; // low level solver name
   to_csv << -1 << ","; // disappear or not
   to_csv << -1 << ","; // 是否使用CAT break tie
   to_csv << -1 << ","; // random seed
 
-  size_t total_cost_hold_endpoints = get_sum_of_loss(solution);
-  to_csv << total_cost_hold_endpoints << ",";
-
+  size_t total_cost_disappear_at_goal = get_sum_of_loss(solution);
+  to_csv << total_cost_disappear_at_goal << ",";
   auto plan_time = comp_time_ms;
   to_csv << plan_time << ",";
-
   to_csv << "NULL" << ","; // comment
   to_csv << "https://github.com/ssfc/lacam0" << ","; // method source
 
