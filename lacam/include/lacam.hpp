@@ -22,6 +22,7 @@
 #include "pibt.hpp"
 #include "utils.hpp"
 
+
 // low-level search node
 struct LNode {
   std::vector<int> who;
