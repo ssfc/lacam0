@@ -160,7 +160,7 @@ void make_log(const Instance &ins, const Solution &solution,
   to_csv << plan_time << ",";
 
   to_csv << "NULL" << ","; // comment
-  to_csv << "https://github.com/ssfc/rhcr" << ","; // method source
+  to_csv << "https://github.com/ssfc/lacam0" << ","; // method source
 
   // 获取当前时间点
   auto now = std::chrono::system_clock::now();
