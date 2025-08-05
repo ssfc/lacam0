@@ -86,8 +86,10 @@ int main(int argc, char *argv[])
   if (solution.empty()) info(1, verbose, &deadline, "failed to solve");
 
   // check feasibility
-  if (!is_feasible_solution(ins, solution, verbose)) {
+  if (!is_feasible_solution(ins, solution, verbose))
+  {
     info(0, verbose, &deadline, "invalid solution");
+    
     return 1;
   }
 
