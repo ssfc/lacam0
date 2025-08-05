@@ -4,7 +4,10 @@
 #pragma once
 #include "utils.hpp"
 
-struct Vertex {
+
+// 封装了一个点的位置、唯一编号、邻接关系以及所有相关动作，是图结构建模和搜索算法的基础数据结构。
+struct Vertex
+{
   const int id;     // index for V in Graph
   const int index;  // index for U (width * y + x) in Graph
   const int x;
@@ -14,6 +17,7 @@ struct Vertex {
 
   Vertex(int _id, int _index, int _x, int _y);
 };
+
 using Vertices = std::vector<Vertex *>;
 using Config = std::vector<Vertex *>;  // locations for all agents
 using Path = std::vector<Vertex *>;    // path
