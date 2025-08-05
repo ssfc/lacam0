@@ -187,7 +187,7 @@ void make_log(const Instance &ins, const Solution &solution,
 
   size_t total_cost_disappear_at_goal = get_sum_of_loss(solution);
   to_csv << total_cost_disappear_at_goal << ",";
-  auto plan_time = comp_time_ms;
+  auto plan_time = comp_time_ms / 1000; // 以秒为单位
   to_csv << plan_time << ",";
   to_csv << "NULL" << ","; // comment
   to_csv << "https://github.com/ssfc/lacam0" << ","; // method source
